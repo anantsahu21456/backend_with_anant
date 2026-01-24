@@ -61,76 +61,102 @@
 // })
 
 
+// import express from 'express'
+
+// const app = express();
+// const mobileData = [
+//   {
+//   "users": [
+//     {
+//       "id": 1,
+//       "name": "Rahul Sharma",
+//       "mobileNumber": "+91 9876543210",
+//       "brand": "Samsung",
+//       "model": "Galaxy S21",
+//       "os": "Android",
+//       "storage": "128GB",
+//       "ram": "8GB",
+//       "carrier": "Jio",
+//       "country": "India"
+//     },
+//     {
+//       "id": 2,
+//       "name": "Ananya Verma",
+//       "mobileNumber": "+91 8765432109",
+//       "brand": "Apple",
+//       "model": "iPhone 13",
+//       "os": "iOS",
+//       "storage": "256GB",
+//       "ram": "4GB",
+//       "carrier": "Airtel",
+//       "country": "India"
+//     },
+//     {
+//       "id": 3,
+//       "name": "Karan Patel",
+//       "mobileNumber": "+91 7654321098",
+//       "brand": "OnePlus",
+//       "model": "OnePlus 11",
+//       "os": "Android",
+//       "storage": "256GB",
+//       "ram": "12GB",
+//       "carrier": "VI",
+//       "country": "India"
+//     }
+//   ]
+// }
+
+// ]
+
+// app.get('/randome_get_data',(req,res)=>{
+//     res.send("hello form express server🥳🥳🥳🥳🥳😎😎😎")
+
+// })
+// app.get('/product_data',(req,res)=>{
+//     res.send("here you will get product data from backend😎😎😎")
+
+// })
+// app.get('/mobile_data',(req,res)=>{
+//     res.send(mobileData)
+
+// })
+// app.get('/laptop_data',(req,res)=>{
+//     res.send("here you will get laptop data from backend😎😎😎")
+
+// })
+
+// app.listen(7000,(err)=>{
+//     if(err){
+//         console.log("getting error while try to start server", err)
+//     }
+//     else{
+//         console.log("server is runnig on port 7000🥳🥳🥳🥳😂😂😂😂")
+//     }
+
+// })
+
+
+
+
+
 import express from 'express'
 
 const app = express();
-const mobileData = [
-  {
-  "users": [
-    {
-      "id": 1,
-      "name": "Rahul Sharma",
-      "mobileNumber": "+91 9876543210",
-      "brand": "Samsung",
-      "model": "Galaxy S21",
-      "os": "Android",
-      "storage": "128GB",
-      "ram": "8GB",
-      "carrier": "Jio",
-      "country": "India"
-    },
-    {
-      "id": 2,
-      "name": "Ananya Verma",
-      "mobileNumber": "+91 8765432109",
-      "brand": "Apple",
-      "model": "iPhone 13",
-      "os": "iOS",
-      "storage": "256GB",
-      "ram": "4GB",
-      "carrier": "Airtel",
-      "country": "India"
-    },
-    {
-      "id": 3,
-      "name": "Karan Patel",
-      "mobileNumber": "+91 7654321098",
-      "brand": "OnePlus",
-      "model": "OnePlus 11",
-      "os": "Android",
-      "storage": "256GB",
-      "ram": "12GB",
-      "carrier": "VI",
-      "country": "India"
-    }
-  ]
-}
 
-]
+app.use(express.json());
 
-app.get('/randome_get_data',(req,res)=>{
-    res.send("hello form express server🥳🥳🥳🥳🥳😎😎😎")
+//& import router here 
+import studentRouter from './routes/student.route.js'
+import teacherRouter from './routes/teacher.route.js'
 
-})
-app.get('/product_data',(req,res)=>{
-    res.send("here you will get product data from backend😎😎😎")
+//& now crete api here
 
-})
-app.get('/mobile_data',(req,res)=>{
-    res.send(mobileData)
+app.use('/api/v1/student',studentRouter)
+app.use('/api/v1/teacher',teacherRouter)
 
-})
-app.get('/laptop_data',(req,res)=>{
-    res.send("here you will get laptop data from backend😎😎😎")
+export default app;
 
-})
 
-app.listen(7000,(err)=>{
-    if(err){
-        console.log("getting error while try to start server", err)
-    }
-    else{
-        console.log("server is runnig on port 7000🥳🥳🥳🥳😂😂😂😂")
-    }
 
-})
+
+
